@@ -1,43 +1,108 @@
-Go dasturlash tilini 0 dan chuqur o'rganish uchun quyidagi mavzularni bosqichma-bosqich o'rganishingiz tavsiya etiladi:
+# O'zgaruvchilar ma'lumotlar qiymatlarini saqlash uchun konteynerlardir
+
+## Go'da o'zgaruvchini e'lon qilishning ikki yo'li mavjud
+
+### 1. Var kalit so'zidan, keyin o'zgaruvchi nomi va turidan foydalaning
+
+```go
+package main
+
+import ("fmt")
+
+var ism = "Asadbek" // Birchi o'zgaruvchi
+
+func main() {
+ var meva = "Olma" // Ikkichi o'zgaruvchi
+ fmt.Println(ism)
+ fmt.Println(meva)
+}
+```
+
+### 2. := belgisidan keyin oʻzgaruvchi qiymatidan foydalaning
+
+```go
+package main
+
+import ("fmt")
+
+func main() {
+ varOne := 100
+ varTwo := 2
+ fmt.Println(varOne)
+ fmt.Println(varTwo)
+}
+```
+
+### Turlarni belgilash + Xulosa qilingan tur
+Quyidagi kodda siz yozmoqchi bo‘lgan blok (grouped) o‘zgaruvchilar deklaratsiyasi Go tilida qanday yozilishi kerakligi va qanday imlo xatolar borligini ko‘rsatib tuzatib chiqaman:
 <br>
-### 1. Go Dasturlash Tili Asoslari
-* Sintaksis va strukturasi: <b>package, import, func, main</b> funktsiyasi.
-* O'zgaruvchilar: Ma'lumot turlari, tiplar, konstantalar.
-* Shartli operatorlar: <b>if, switch, select</b>.
-* Tsikllar: for, break, continue.
-Funktsiyalar: Parametrlar, qaytarish qiymatlari, nomli argumentlar.
-### 2. Ma'lumotlar Tuzilmalari
-* Massivlar va kesmalar (arrays, slices).
-* Maplar (dictionary): Ma'lumotlarga kalit yordamida kirish.
-* Strukturalar: structlar va ularning uslublari.
-* Poytaxtlar (Pointers): Go-dagi pointerlar va ulardan foydalanish.
-### 3. Go da Xatoliklar va Xatoliklar Boshqaruvi
-* Error Handling: Go-ning xatoliklarni qayta ishlash usuli va error interfeysi.
-* Panik va rekursiya: panic, recover funksiyalari.
-### 4. Konkurentlik va Gorutinlar
-* Gorutinlar (goroutines): Parallellik va konkurrentlikni boshqarish.
-* Kanallar (channels): Gorutinlar o'rtasida ma'lumot uzatish.
-* Select operatori: Kanallar bilan ishlashda shartlarni tekshirish.
-### 5. Interfeyslar va Polimorfizm
-* Go interfeyslari: Obyektlar va metodlar, interfeyslar yordamida polimorfizm yaratish.
-* Bo'sh interfeys: interface{} va dinamik turlari.
-### 6. Paketi va Import qilish
-* Go modullari: Go modullarini yaratish va boshqarish (go.mod).
-* Paketchalar (packages): Paketchalar yaratish va import qilish.
-### 7. Sinovlar va Testlash
-* Testlar: testing paketidan foydalanish, test funksiyalari yaratish.
-* Benchmarking: Kodingizning samaradorligini o'lchash.
-* Mocking: Testlarda tashqi resurslar bilan ishlash.
-### 8. Go da HTTP Server va Web dasturlash
-* HTTP Server yaratish: Go-da oddiy HTTP serverini yaratish.
-* JSON bilan ishlash: API uchun JSONni kodlash va dekodlash.
-* Go-da web freymvorklari: Gin, Echo kabi freymvorklar.
-### 9. Ma'lumotlar Bazasiga Ulanish
-* SQL bilan ishlash: Go-da ma'lumotlar bazasi bilan ishlash (database/sql).
-* ORM foydalanish: Go ORM kutubxonalaridan foydalanish (gorm, sqlx).
-### 10. Ko'p Platformali Dasturlar
-* Go dasturini turli platformalarda ishlatish: Linux, macOS, Windows platformalariga mo'ljallangan dasturlar yaratish.
-### 11. Golang uchun Yaxshi Amaliyotlar
-* Kod formatlash: gofmt yordamida kodni avtomatik tarzda formatlash.
-* Go lang haqida umumiy maslahatlar: Go dasturini samarali yozish uchun tavsiyalar.
-* Har bir mavzu bo'yicha amaliy misollar va kichik loyihalar qilishni unutmang, chunki bu o'rganishni yanada mustahkamlashga yordam beradi.
+```go
+package main
+
+import ("fmt")
+
+func main() {
+	var (
+		son       int           // int tipidagi o'zgaruvchi, default qiymati 0
+		raqam     int = 1       // int tipida va boshlang‘ich qiymat bilan
+		salomlar  string = "salom" // string (qator) tipida qiymat berilgan
+	)
+
+	fmt.Println(son)
+	fmt.Println(raqam)
+	fmt.Println(salomlar)
+}
+
+```
+
+### Ko'p o'zgaruvchilar deklaratsiyasiga o'ting
+
+```go
+package main
+import ("fmt")
+
+func main() {
+ var one, two, three, four, five int = 1, 2, 3, 4, 5
+
+ fmt.Println(bir)
+ fmt.Println(ikki)
+ fmt.Println(uch)
+ fmt.Println(to'rtta)
+}
+```
+
+### Blokdagi o'zgaruvchilar deklaratsiyasiga o'tish
+
+```go
+package main
+
+import ("fmt")
+
+func main() {
+	var (
+		num        int           // faqat deklaratsiya, default qiymati 0
+		raqam      int = 1       // int tipida, qiymati 1
+		salomlash  string = "salom" // string tipida, qiymati "salom"
+	)
+
+	fmt.Println(num)
+	fmt.Println(raqam)
+	fmt.Println(salomlash)
+}
+```
+
+## Go o'zgaruvchilarni nomlash qoidalari
+
+#### 1. Oʻzgaruvchi nomi harf yoki pastki chiziq belgisi (\_) bilan boshlanishi kerak.
+
+#### 2. O‘zgaruvchi nomi raqam bilan boshlana olmaydi
+
+#### 3. O‘zgaruvchi nomi faqat alfa-raqamli belgilar va pastki chiziqdan iborat bo‘lishi mumkin (a-z, A-Z, 0-9 va \_ )
+
+#### 4. Oʻzgaruvchilar nomlari katta-kichik harflarga sezgir (yosh, Yosh va YOSH uch xil oʻzgaruvchidir)
+
+#### 5. O‘zgaruvchi nomining uzunligiga cheklov yo‘q
+
+#### 6. O‘zgaruvchi nomida bo‘shliq bo‘lishi mumkin emas
+
+#### 7. O'zgaruvchi nomi hech qanday Go kalit so'zlari bo'lishi mumkin emas
