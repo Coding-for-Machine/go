@@ -1,0 +1,7 @@
+1. Doimiy nom (constant) yarating (myConst).
+
+2. 20 ni qiymat sifatida saqlang.
+
+3. Bir harakatda (x, y, z) nomli o‘zgaruvchilarni yarating.
+
+4. Barcha konstantalarni (constant) konsolga chiqarib bering.
