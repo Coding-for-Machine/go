@@ -26,4 +26,20 @@ func main() {
 	} else {
 		fmt.Println("Siz yossiz?")
 	}
+	// misollar .
+
+	if 7%2==0 {
+		fmt.Println("7 ti 2 ga bulinmaydi")
+	}else {
+		fmt.Println("7 ga 2 ga bulinadi")
+	}
+	if 8%4 {
+		fmt.Println("8 bu son 4 ga bulinadi")
+	}else {
+		fmt.Println("8 bu son 4 ga bulinmaydi")
+	}
+	if 8%2 == 0 || 7%2 == 0 {
+        fmt.Println("8 yoki 7 juft son")
+    	}
+
 }
